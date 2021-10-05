@@ -83,6 +83,10 @@ public class Event extends AbstractEntity{
         return venue;
     }
 
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
     public List<User> getUsers() {
         return users;
     }

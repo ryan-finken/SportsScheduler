@@ -6,9 +6,7 @@ import org.launchcode.Play4All.models.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -31,6 +29,18 @@ public class VenueController {
         Venue venue = result.get();
         model.addAttribute("venue", venue);
         return "venue/details";
+    }
+
+    @GetMapping("create")
+    public String displayCreateVenueForm(Model model) {
+        model.addAttribute("venue", new Venue());
+        return "venue/create";
+    }
+
+    @PostMapping("create")
+    public String processCreateVenueForm(@ModelAttribute Venue venue) {
+        venueRepository.save(venue);
+        return "redirect:";
     }
 
 }

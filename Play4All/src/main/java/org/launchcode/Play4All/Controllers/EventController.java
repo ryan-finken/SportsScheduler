@@ -32,22 +32,8 @@ public class EventController {
     private UserRepository userRepository;
 
     @GetMapping
-    public String displayEvents(@RequestParam(required = false) Integer eventId, Model model) {
-
-        if (eventId == null) {
-            model.addAttribute("title", "All Events");
-            model.addAttribute("event", eventRepository.findAll());
-        } else {
-            Optional<Event> result = eventRepository.findById(eventId);
-            if (result.isEmpty()) {
-                model.addAttribute("title", "Invalid Category ID: " + eventId);
-            } else {
-                Event event = result.get();
-                model.addAttribute("title", "Event in Venue: " + event.getName());
-                model.addAttribute("event", event.getDescription());
-            }
-        }
-
+    public String displayEvents(Model model) {
+        model.addAttribute("events", eventRepository.findAll());
         return "event/index";
     }
 
@@ -63,10 +49,11 @@ public class EventController {
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@ModelAttribute VenueEventDTO venueEvent, Model model) {
+    public String processCreateEventForm(@ModelAttribute VenueEventDTO venueEvent) {
         Venue venue = venueEvent.getVenue();
         Event event = venueEvent.getEvent();
         venue.addEvent(event);
+        event.setVenue(venue);
         eventRepository.save(event);
         venueRepository.save(venue);
         return "redirect:";

@@ -11,11 +11,13 @@
     <tr>
         <td class="boldheader">Name</td>
         <td class="boldheader">Date</td>
+        <td class="boldheader">Venue</td>
     </tr>
     </thead>
-    <tr th:each="event : ${event}">
+    <tr th:each="event : ${events}">
         <td><a class="eventfont" th:text="${event.name}" th:href="'/event/details?eventId=' + ${event.id}"></a></td>
         <td th:text="${#dates.format(event.date, 'dd MMM yyyy')}"></td>
+        <td><a th:text="${event.venue.name}" th:href="'/venue/details?venueId=' + ${event.venue.id}"></a></td>
     </tr>
 
 </table>

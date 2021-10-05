@@ -10,20 +10,24 @@
     <h1 th:text="${event.name}">Event Name</h1>
     </div>
     <div>
-    <h2>Event Info and Description : </h2>
+        <h5>Venue:</h5>
+        <a th:text="${event.venue.name}" th:href="'/venue/details?venueId=' + ${event.venue.id}"></a>
+    </div>
+    <div>
+    <h5>Event Info and Description : </h5>
         <p th:text="${event.description}"></p>
     </div>
     <div>
-        <h3>Contact Email : </h3>
+        <h5>Contact Email : </h5>
         <p th:text="${event.email}"></p>
-        <h3>Date and Time of Event : </h3>
+        <h5>Date and Time of Event : </h5>
         <p th:text="${#dates.format(event.date, 'dd MMM yyyy')}"></p>
         <p th:text="${#temporals.format(event.time, 'h:mm a')}"></p>
     </div>
 </article>
 
     <div>
-        <article><h3>Registered Players</h3>
+        <article><h5>Registered Players</h5>
             <span><a th:each="user : ${event.users}" th:text="${user.displayName}" th:href="'/user/details?userId=' + ${user.id}"></a></span>
         </article>
     </div>
