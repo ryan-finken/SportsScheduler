@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<h1>Venues</h1>
+<table class="table table-striped" >
+    <thead>
+    <tr>
+        <td class="boldheader">Name</td>
+        <td class="boldheader">City</td>
+    </tr>
+    </thead>
+    <tr th:each="venue : ${venues}">
+        <td><a th:text="${venue.name}" th:href="'/venue/details?venueId=' + ${venue.id}"></a></td>
+        <td th:text="${venue.city}"></td>
+    </tr>
+
+</table>
+</body>
+</html>

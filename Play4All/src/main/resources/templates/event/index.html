@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+<div class="container body-content">
+<table class="table table-striped" >
+    <thead>
+    <tr>
+        <td class="boldheader">Name</td>
+        <td class="boldheader">Date</td>
+    </tr>
+    </thead>
+    <tr th:each="event : ${event}">
+        <td><a class="eventfont" th:text="${event.name}" th:href="'/event/details?eventId=' + ${event.id}"></a></td>
+        <td th:text="${#dates.format(event.date, 'dd MMM yyyy')}"></td>
+    </tr>
+
+</table>
+</div>
+
+</body>
+</html>

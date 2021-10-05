@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<form method="post">
+    <input type="hidden" th:field="${venueEvent.venue}" />
+    <div class="form-group">
+        <label>Name
+            <input th:field="${venueEvent.event.name}" class="form-control">
+        </label>
+        <p class="error" th:errors="${venueEvent.event.name}"></p>
+    </div>
+    <div class="form-group">
+        <label>Description
+            <input th:field="${venueEvent.event.description}" class="form-control">
+        </label>
+        <p class="error" th:errors="${venueEvent.event.description}"></p>
+    </div>
+    <div class="form-group">
+        <label>Email
+            <input th:field="${venueEvent.event.email}" class="form-control" type="email">
+        </label>
+        <p class="error" th:errors="${venueEvent.event.email}"></p>
+    </div>
+    <div class="form-group">
+        <label>Date
+            <input type="date" th:field="${venueEvent.event.date}" class="form-control">
+        </label>
+        <p class="error" th:errors="${venueEvent.event.date}"></p>
+    </div>
+    <div class="form-group">
+        <label>Time
+            <input type="time" th:field="${venueEvent.event.time}" class="form-control">
+        </label>
+        <p class="error" th:errors="${venueEvent.event.time}"></p>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-success">
+    </div>
+</form>
+</body>
+</html>

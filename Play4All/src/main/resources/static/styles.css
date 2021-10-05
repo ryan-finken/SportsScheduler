@@ -1,0 +1,62 @@
+.body-content {
+    margin-top: 72px;
+}
+body{
+    background-color: lightblue;
+}
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
+.bullets{
+    font-weight:bold
+}
+.nav-item{
+    margin-right:5px;
+}
+.nav-link{
+    color: white
+}
+.nav-link:hover{
+    color: white
+}
+.border1{
+    border-style: solid;
+    padding: 10px;
+    margin-top: 5px;
+}
+.boldheader{
+    font-weight:bold;
+    background:white;
+}
+.eventfont{
+    color:purple;
+}
+.table{
+    background:#a5dab1;
+}
+#bio{
+    height:300px;
+    width:600px;
+    margin-top:25px;
+}
+
+aside {
+    width: 40%;
+    padding-left: .5rem;
+    margin-left: .5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    font-style: italic;
+    color: #29627e;
+}
+main {
+font-family: Georgia, serif;
+}

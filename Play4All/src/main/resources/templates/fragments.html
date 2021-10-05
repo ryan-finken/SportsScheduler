@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Play4All</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body th:fragment="body">
+<header th:fragment="header">
+    <article>
+        <img height = "150" width = "300" th:src = "@{/images/Play4All_Transparent_Cropped.png}"/>
+        <div th:if ="${session.user != null and session.user gt 0}">
+            <!-- if the session contains a key named "user" and the value of "user" is greater than 0 -->
+            <ul class="nav" style = "float:right;">
+                <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+        <div th:if ="${session.user == null or session.user lt 1}">
+            <!-- if the session does not contain a key named "user" or the value of "user" is less than 1 -->
+            <ul class="nav" style = "float:right;">
+                <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" href="/login">Login/Register</a></li>
+            </ul>
+        </div>
+    </article>
+    <ul class="nav">
+        <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" href="/">Home Page</a></li>
+        <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" href="/venue/">Venues List</a></li>
+        <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" th:href="'/user/details?userId=' + ${session.user}">Your Profile</a></li>
+        <li class="nav-item btn btn-success btn-outline-dark"><a class="nav-link" href="/user/">User Roster</a></li>
+    </ul>
+</header>
+</body>
+</html>

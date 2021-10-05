@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+<main>
+  <h1>Details for Venue: <span th:text="${venue.name}"></span></h1>
+  <h5>Description:</h5>
+  <p th:text="${venue.description}"></p>
+  <h5>Location:</h5>
+  <p th:text="${venue.address}"></p>
+  <p th:text="${venue.city} + ', ' + ${venue.zip}"></p>
+  <ul>
+    <li th:each="event : ${venue.events}">
+      <a th:text="${event.name}" th:href="'/event/details?eventId=' + ${event.id}"></a>
+    </li>
+  </ul>
+  <a th:href="'/event/create?venueId=' + ${venue.id}">Create an Event</a>
+</main>
+</body>
+</html>

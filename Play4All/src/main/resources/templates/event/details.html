@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+<main>
+<article>
+    <div>
+    <h1 th:text="${event.name}">Event Name</h1>
+    </div>
+    <div>
+    <h2>Event Info and Description : </h2>
+        <p th:text="${event.description}"></p>
+    </div>
+    <div>
+        <h3>Contact Email : </h3>
+        <p th:text="${event.email}"></p>
+        <h3>Date and Time of Event : </h3>
+        <p th:text="${#dates.format(event.date, 'dd MMM yyyy')}"></p>
+        <p th:text="${#temporals.format(event.time, 'h:mm a')}"></p>
+    </div>
+</article>
+
+    <div>
+        <article><h3>Registered Players</h3>
+            <span><a th:each="user : ${event.users}" th:text="${user.displayName}" th:href="'/user/details?userId=' + ${user.id}"></a></span>
+        </article>
+    </div>
+</main>
+
+<aside>
+    <div>
+        <a th:href="'/event/register?eventId=' + ${event.id} + '&userId=' + ${session.user}">Register for this event!</a>
+    </div>
+    <div>
+        <a href="/event">Go Back To Events List</a>
+    </div>
+    <div>
+        <a th:href="'/event/edit-event?eventId=' + ${event.id}">Edit Event</a>
+    </div>
+</aside>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<form method="post" action="/user/edit-bio">
+  <div class="form-group">
+    <label>User Bio
+      <input type="hidden" th:name="id" th:field="${user.id}" th:value="${user.id}" />
+      <textarea th:name="bio" th:field="${user.bio}" th:value="${user.bio}"></textarea>
+    </label>
+    <div class="form-group">
+      <input type="submit" value="Update" class="btn btn-success">
+    </div>
+  </div>
+</form>
+
+</body>
+</html>
