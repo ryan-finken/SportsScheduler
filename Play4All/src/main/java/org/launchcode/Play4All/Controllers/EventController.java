@@ -7,15 +7,12 @@ import org.launchcode.Play4All.data.VenueRepository;
 import org.launchcode.Play4All.models.Event;
 import org.launchcode.Play4All.models.User;
 import org.launchcode.Play4All.models.Venue;
-import org.launchcode.Play4All.models.dto.UserEventDTO;
 import org.launchcode.Play4All.models.dto.VenueEventDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -89,12 +86,12 @@ public class EventController {
     }
 
     @GetMapping("register")
-    public String displayRegisterForm(@RequestParam Integer eventId, @RequestParam Integer userId){
+    public String registerUserForEvent(@RequestParam Integer eventId, @RequestParam Integer userId){
         Optional<Event> eventResult = eventRepository.findById(eventId);
         Event event = eventResult.get();
         Optional<User> userResult = userRepository.findById(userId);
         User user = userResult.get();
-        if (!event.getUsers().contains(user)) {
+        if (!event.getUsers().contains(user)) { // if the user is not already registered for this event
             event.addUser(user);
             eventRepository.save(event);
         }
